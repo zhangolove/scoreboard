@@ -33,8 +33,8 @@ function ScoreCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">+</Button>
         <Button size="small">-</Button>
+        <Button size="small">+</Button>
       </CardActions>
     </Card>
   );
