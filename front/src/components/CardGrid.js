@@ -27,6 +27,39 @@ class CardGrid extends React.Component {
     spacing: '16',
   };
 
+  defaultCards = [
+    {
+      title: 'Reading 10K',
+      amount: 0,
+      unit: 'page',
+    },
+    {
+      title: 'Doing pushups',
+      amount: 0,
+      unit: 'time',
+    },
+    {
+      title: 'Doing situps',
+      amount: 0,
+      unit: 'time',
+    },
+    {
+      title: 'Practicing American Accent',
+      amount: 0,
+      unit: 'chapter',
+    },
+    {
+      title: 'Reading Computer Networks',
+      amount: 0,
+      unit: 'page',
+    },
+    {
+      title: 'Reading finanical books',
+      amount: 0,
+      unit: 'page',
+    },
+  ];
+
   handleChange = key => (event, value) => {
     this.setState({
       [key]: value,
@@ -40,10 +73,19 @@ class CardGrid extends React.Component {
     return (
       <Grid container className={classes.root} spacing={16}>
         <Grid item xs={12}>
-          <Grid container className={classes.demo} justify="center" spacing={Number(spacing)}>
-            {[0, 1, 2, 4, 5, 6].map(value => (
-              <Grid key={value} item>
-                <ScoreCard className={classes.paper} />
+          <Grid container
+            className={classes.demo}
+            justify="center"
+            spacing={Number(spacing)}
+          >
+            {this.defaultCards.map(({ title, amount, unit },k) => (
+              <Grid key={k} item>
+                <ScoreCard
+                  className={classes.paper}
+                  title={title}
+                  amount={amount}
+                  unit={unit}
+                />
               </Grid>
             ))}
           </Grid>

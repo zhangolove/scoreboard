@@ -9,30 +9,45 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   card: {
-    minWidth: 100,
+    width: 200,
+    height: 220,
+    display: "flex",
+    "flex-direction": "column",
+    "justify-content": "space-between",
   },
   title: {
     marginBottom: 4,
   },
+  cardGrid: {
+    "border-color": "red",
+    "border-style": "solid",
+  },
+  cardContent: {
+    "border-color": "green",
+    "border-style": "solid",
+  },
+  cardAction: {
+    "display": "flex",
+    "justify-content": "space-around",
+  },
 };
 
 function ScoreCard(props) {
-  const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
+  const { classes, title, amount, unit } = props;
 
   return (
     <Card className={classes.card}>
-      <CardContent>
+      <CardContent className={classes.content}>
         <Typography variant="headline" component="h2" className={classes.title}>
-          Workout
+          { title }
         </Typography>
         <Typography component="p">
-          10
+          { amount }
           <br />
-          minutes
+          { unit }
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions className={classes.cardAction}>
         <Button size="small">-</Button>
         <Button size="small">+</Button>
       </CardActions>
@@ -42,6 +57,9 @@ function ScoreCard(props) {
 
 ScoreCard.propTypes = {
   classes: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+  unit: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(ScoreCard);
